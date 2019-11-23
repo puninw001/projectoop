@@ -4,14 +4,9 @@ public class MainClass {
 
     public static final int WIDTH=640;
     public static final int HEIGHT=480;
+    int Ly = 160;
     public static void main(String[] args) {
-        JFrame window = new JFrame("2D Game");
-        window.setSize(WIDTH,HEIGHT);
-        window.setResizable(false);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setLocationRelativeTo(null);
-        window.add(new Game());
-        window.setVisible(true);
+        new Menu();
     }
     
 }
