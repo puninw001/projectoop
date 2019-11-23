@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 public class Game extends JPanel implements ActionListener{
@@ -22,10 +23,11 @@ public class Game extends JPanel implements ActionListener{
     
     public void paint(Graphics g){
         super.paint(g);
+        Image img = Toolkit.getDefaultToolkit().createImage(System.getProperty(
+            "user.dir")+File.separator+"img"+File.separator+"p1.png");
         Graphics2D g2d = (Graphics2D)g;
         //g2d.drawString("hello game", 0,20);
-        g2d.setColor(Color.green);
-        g2d.fillRect(0, 0, MainClass.WIDTH, MainClass.HEIGHT);
+        g2d.drawImage(img, 0, 0, this);
         player.draw(g2d);
         c.draw(g2d);
         g2d.setColor(Color.black);
