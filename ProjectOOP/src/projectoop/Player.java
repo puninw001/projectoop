@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 public class Player {
     private int x, y, speedx =0, speedy=0;
-    private LinkedList<Enemy> e = ControlEnemy.getEnemyBounds();
+    public LinkedList<Enemy> e = ControlEnemy.getEnemyBounds();
     
     public Player(int x, int y) {
         this.x = x;
