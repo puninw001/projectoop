@@ -15,8 +15,11 @@ import java.io.File;
 import javax.swing.*;
 import javax.swing.border.*;
 public class Pmenu extends JPanel{
+    int px = 120, py = 70;
     Image bg = Toolkit.getDefaultToolkit().createImage(System.getProperty(
             "user.dir")+File.separator+"img"+File.separator+"bg.jpg");
+    Image tt = Toolkit.getDefaultToolkit().createImage(System.getProperty(
+            "user.dir")+File.separator+"img"+File.separator+"title.png");
 
     public Pmenu() {
         setSize(640,480);
@@ -24,10 +27,8 @@ public class Pmenu extends JPanel{
     }
     @Override
     public void paintComponent(Graphics g){
-        g.drawImage(bg, 0, 0,640,480,0,0,678,452, this);
-        g.setColor(Color.black);
-        g.setFont(new Font("Tahoma",Font.BOLD,30));
-        g.drawString("Dragon Want to Eat Chicken!", 120 , 120);
+        g.drawImage(bg, 0, 0,640,480,0,0,640,465, this);
+        g.drawImage(tt, px, py,px+400,py+70,0,0,400,65, this);
 
     }
 }
