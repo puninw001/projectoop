@@ -19,7 +19,7 @@ public class Pcredit extends JPanel{
     Image cr = Toolkit.getDefaultToolkit().createImage(System.getProperty(
           "user.dir")+File.separator+"img"+File.separator+"credit.jpg");
     Image tcr = Toolkit.getDefaultToolkit().createImage(System.getProperty(
-          "user.dir")+File.separator+"img"+File.separator+"tcre.png");
+          "user.dir")+File.separator+"img"+File.separator+"tcr.png");
 
     public Pcredit() {
         setSize(640,480);
