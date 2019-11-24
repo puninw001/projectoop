@@ -15,7 +15,7 @@ import java.io.File;
 import javax.swing.*;
 import javax.swing.border.*;
 public class Credit extends JFrame implements ActionListener{
-    JButton btn0 = new JButton("Close");
+    JButton btn0 = new JButton("Back to Menu");
 
     public Credit() {
         setSize(640,480);
@@ -24,7 +24,10 @@ public class Credit extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
         setVisible(true);
         setLayout(null);
-        btn0.setBounds(250, 320, 150, 50);
+        btn0.setBounds(250, 360, 150, 50);
+        btn0.setBackground ( Color.ORANGE );
+        btn0.setForeground ( Color.BLACK );
+        btn0.setBorder( BorderFactory.createLineBorder ( Color.WHITE, 2 ) );
         btn0.addActionListener(this);
         add(new Pcredit());
         add(btn0);
