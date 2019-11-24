@@ -15,10 +15,10 @@ import java.io.File;
 import javax.swing.*;
 import javax.swing.border.*;
 public class Menu extends JFrame implements ActionListener{
-    JButton btn1 = new JButton("Start");
-    JButton btn2 = new JButton("How to play?");
-    JButton btn3 = new JButton("Credits");
-    int Ly = 160;
+    Btn btn1 = new Btn("Start");
+    Btn btn2 = new Btn("How to play?");
+    Btn btn3 = new Btn("Credits");
+    int Ly = 180;
     public Menu() {
         setSize(640,480);
         setResizable(false);
