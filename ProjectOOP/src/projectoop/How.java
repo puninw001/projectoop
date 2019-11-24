@@ -15,7 +15,7 @@ import java.io.File;
 import javax.swing.*;
 import javax.swing.border.*;
 public class How extends JFrame implements ActionListener{
-        Btn btn0 = new Btn("Close");
+    private Btn btn0 = new Btn("Close");
 
     public How() {
         setSize(640,480);
