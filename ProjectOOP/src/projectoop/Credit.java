@@ -15,7 +15,7 @@ import java.io.File;
 import javax.swing.*;
 import javax.swing.border.*;
 public class Credit extends JFrame implements ActionListener{
-    JButton btn0 = new JButton("Back to Menu");
+    private JButton btn0 = new JButton("Back to Menu");
 
     public Credit() {
         setSize(640,480);
