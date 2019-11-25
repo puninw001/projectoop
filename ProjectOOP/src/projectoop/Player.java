@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.*;
 import java.io.IOException;
 import java.util.LinkedList;
 import javax.imageio.ImageIO;
@@ -14,13 +15,14 @@ import javax.imageio.ImageIO;
 public class Player {
     private int x, y, speedx =0, speedy=0;
     public LinkedList<Enemy> e = ControlEnemy.getEnemyBounds();
+    private int hscore = 0;
     
     public Player(int x, int y) {
         this.x = x;
         this.y = y;
     }
     
-    public void update(){
+    public void update() throws ClassNotFoundException{
         x += speedx;
         y += speedy;
         
@@ -79,10 +81,38 @@ public class Player {
         return new Rectangle(x,y, 32,32);
     }
 
-    public void colision(){
+    public void colision() throws ClassNotFoundException{
+        File f = new File("highscore.dat");
         for (int i = 0; i< e.size(); i++){
             if(getBounds().intersects(e.get(i).getBounds())){
                 System.out.println("Your Score is "+Game.score);
+                FileOutputStream fout;
+                ObjectOutputStream oout;
+                FileInputStream fin;
+                ObjectInputStream oin;
+                try{
+                    fin = new FileInputStream("highscore.dat");
+                    oin = new ObjectInputStream(fin);
+                    if(f.exists()){
+                        hscore = (int) oin.readObject();
+                    }
+                    oin.close();
+                    fin.close();
+                }
+                catch(IOException e){
+                }
+                try{
+                    fout = new FileOutputStream("highscore.dat");
+                    oout = new ObjectOutputStream(fout);
+                    if(Game.score >= hscore){
+                        oout.writeObject(Game.score);
+                    }
+                    oout.close();
+                    fout.close();
+                }
+                catch(IOException ex){
+                    System.out.println("A");
+                }
                 Game.score = 0;
             }
         }
