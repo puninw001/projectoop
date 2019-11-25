@@ -1,6 +1,7 @@
 package projectoop;
 
 import java.awt.Graphics2D;
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class ControlEnemy {
@@ -14,7 +15,7 @@ public class ControlEnemy {
         addEnemy(new Enemy(600, 600));
         addEnemy(new Enemy(500, 300));
     }
-    public void draw(Graphics2D g2d){
+    public void draw(Graphics2D g2d) throws IOException{
         for (int i=0; i< e.size(); i++){
             temp=e.get(i);
             temp.draw(g2d);
