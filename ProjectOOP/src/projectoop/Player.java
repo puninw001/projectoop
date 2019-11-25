@@ -2,9 +2,14 @@ package projectoop;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
+import javax.imageio.ImageIO;
 
 public class Player {
     private int x, y, speedx =0, speedy=0;
@@ -34,9 +39,9 @@ public class Player {
         colision();
     }
     
-    public void draw(Graphics2D g2d){
-        g2d.setColor(Color.red);
-        g2d.fillRect(x,y,32,32);
+    public void draw(Graphics2D g2d) throws IOException{
+        Image img = ImageIO.read(new File("img/ttt.gif"));
+        g2d.drawImage(img, x, y, 32, 32, null);
     }
     
     public void keyPressed(KeyEvent e){
