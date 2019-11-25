@@ -2,7 +2,11 @@ package projectoop;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Enemy {
     private int x, y, speedx=5, speedy=5;
@@ -13,9 +17,9 @@ public class Enemy {
         
     }
     
-    public void draw(Graphics2D g2d){
-        g2d.setColor(Color.black);
-        g2d.fillRect(x, y, 32, 32);
+    public void draw(Graphics2D g2d) throws IOException{
+        Image cursor = ImageIO.read(new File("img/tes.gif"));
+        g2d.drawImage(cursor, x, y, 32, 32, null);
     }
     public void update(){
         x+=speedx;
