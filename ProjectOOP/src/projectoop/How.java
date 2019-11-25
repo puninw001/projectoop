@@ -24,7 +24,7 @@ public class How extends JFrame implements ActionListener{
         setLocationRelativeTo(null);
         setVisible(true);
         setLayout(null);
-        btn0.setBounds(250, 360, 150, 50);
+        btn0.setBounds(250, 370, 150, 50);
         btn0.addActionListener(this);
         add(new Phow());
         add(btn0);
