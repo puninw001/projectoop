@@ -7,6 +7,10 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 public class Game extends JPanel implements ActionListener{
@@ -23,16 +27,24 @@ public class Game extends JPanel implements ActionListener{
         setFocusable(true);
     }
     
+    @Override
     public void paint(Graphics g){
         super.paint(g);
-        Image img = Toolkit.getDefaultToolkit().createImage(System.getProperty(
-            "user.dir")+File.separator+"img"+File.separator+"p1.png");
+        Image img;
         Graphics2D g2d = (Graphics2D)g;
-        //g2d.drawString("hello game", 0,20);
-        g2d.drawImage(img, 0, 0, this);
-        player.draw(g2d);
-        c.draw(g2d);
-        g2d.setColor(Color.black);
+        try {
+            img = ImageIO.read(new File("img/gb.gif"));
+            g2d.drawImage(img, 0, 0,640,480,0,0,640,480, this);
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            player.draw(g2d);
+            c.draw(g2d);
+        } catch (IOException ex) {
+            Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        g2d.setColor(Color.white);
         g2d.setFont(new Font("Tahoma",Font.BOLD,20));
         g2d.drawString("Score : "+score,0,20);
     }
