@@ -85,7 +85,6 @@ public class Player {
         File f = new File("highscore.dat");
         for (int i = 0; i< e.size(); i++){
             if(getBounds().intersects(e.get(i).getBounds())){
-                System.out.println("Your Score is "+Game.score);
                 FileOutputStream fout;
                 ObjectOutputStream oout;
                 FileInputStream fin;

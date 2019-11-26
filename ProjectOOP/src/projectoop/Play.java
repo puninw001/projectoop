@@ -22,10 +22,10 @@ public class Play extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        btn.setBounds(10,10, 10, 10);
+        btn.setBounds(10,10, 1, 1);
         btn.addActionListener(this);
         add(new Game());
-//        add(btn);
+        //add(btn);
     }
 
     @Override

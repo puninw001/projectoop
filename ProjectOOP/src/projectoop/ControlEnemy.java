@@ -14,6 +14,8 @@ public class ControlEnemy {
         addEnemy(new Enemy(400, 100));
         addEnemy(new Enemy(600, 600));
         addEnemy(new Enemy(500, 300));
+        addEnemy(new Enemy(100, 300));
+        addEnemy(new Enemy(100, 600));
     }
     public void draw(Graphics2D g2d) throws IOException{
         for (int i=0; i< e.size(); i++){
