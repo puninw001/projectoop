@@ -50,8 +50,15 @@ public class Play extends JFrame implements WindowListener {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
+<<<<<<< HEAD
         addWindowListener(this);
         add(g);
+=======
+        btn.setBounds(10,10, 1, 1);
+        btn.addActionListener(this);
+        add(new Game());
+        //add(btn);
+>>>>>>> 90e848c17c6f33a6f5e81500c194319faa22b24e
     }
 
     @Override
