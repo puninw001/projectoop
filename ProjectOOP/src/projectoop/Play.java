@@ -12,28 +12,93 @@ package projectoop;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.*;
-public class Play extends JFrame implements ActionListener {
-    Btn btn = new Btn("Back to Menu");
+public class Play extends JFrame implements WindowListener {
+    private static int chk = 0;
+    Game g = new Game();
     public Play() {
+        File f = new File("highscore.dat");
+        FileOutputStream fout;
+        ObjectOutputStream oout;
+        FileInputStream fin;
+        ObjectInputStream oin;
+        try{
+            if(f.exists()){
+                fin = new FileInputStream("highscore.dat");
+                oin = new ObjectInputStream(fin);
+                chk = (int) oin.readObject();
+                oin.close();
+                fin.close();
+            }
+        }
+        catch (ClassNotFoundException ex) {
+            System.out.println("err");
+        }catch(IOException e){
+            System.out.println("err");
+        }
+        
         setSize(640,480);
         setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
-        btn.setBounds(10,10, 10, 10);
-        btn.addActionListener(this);
-        add(new Game());
-//        add(btn);
+        addWindowListener(this);
+        add(g);
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        if(ae.getSource().equals(btn)){
-           new Menu();
-           dispose();
-       }
+    public void windowOpened(WindowEvent we) {
+    }
+
+    @Override
+    public void windowClosing(WindowEvent we) {
+    }
+
+    @Override
+    public void windowClosed(WindowEvent we) {
+        File f = new File("highscore.dat");
+        FileOutputStream fout;
+        ObjectOutputStream oout;
+        FileInputStream fin;
+        ObjectInputStream oin;
+        try{
+            fout = new FileOutputStream("highscore.dat");
+            oout = new ObjectOutputStream(fout);
+            if(Player.hscore >= chk){
+                oout.writeObject(Player.hscore);
+            }
+            oout.close();
+            fout.close();
+        }
+        catch(IOException ex){
+            System.out.println("A");
+        }
+        remove(g);
+        new Menu();
+    }
+
+    @Override
+    public void windowIconified(WindowEvent we) {
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent we) {
+    }
+
+    @Override
+    public void windowActivated(WindowEvent we) {
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent we) {
     }
     
     
