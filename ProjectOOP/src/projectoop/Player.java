@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 public class Player {
     private int x, y, speedx =0, speedy=0;
     public LinkedList<Enemy> e = ControlEnemy.getEnemyBounds();
-    private int hscore = 0;
+    public static int hscore = 0;
     
     public Player(int x, int y) {
         this.x = x;
@@ -80,38 +80,41 @@ public class Player {
     public Rectangle getBounds(){
         return new Rectangle(x,y, 32,32);
     }
-
+    
     public void colision() throws ClassNotFoundException{
         File f = new File("highscore.dat");
         for (int i = 0; i< e.size(); i++){
             if(getBounds().intersects(e.get(i).getBounds())){
-                System.out.println("Your Score is "+Game.score);
                 FileOutputStream fout;
                 ObjectOutputStream oout;
                 FileInputStream fin;
                 ObjectInputStream oin;
                 try{
-                    fin = new FileInputStream("highscore.dat");
-                    oin = new ObjectInputStream(fin);
                     if(f.exists()){
+                        fin = new FileInputStream("highscore.dat");
+                        oin = new ObjectInputStream(fin);
                         hscore = (int) oin.readObject();
+                        oin.close();
+                        fin.close();
                     }
-                    oin.close();
-                    fin.close();
                 }
-                catch(IOException e){
+                catch (ClassNotFoundException ex) {
+                    System.out.println("err");
+                }catch(IOException e){
+                    System.out.println("err");
                 }
-                try{
-                    fout = new FileOutputStream("highscore.dat");
-                    oout = new ObjectOutputStream(fout);
-                    if(Game.score >= hscore){
-                        oout.writeObject(Game.score);
+                if(Game.score >= hscore){
+                    try{
+                        hscore = Game.score;
+                        fout = new FileOutputStream("highscore.dat");
+                        oout = new ObjectOutputStream(fout);
+                        oout.writeObject(hscore);
+                        oout.close();
+                        fout.close();
                     }
-                    oout.close();
-                    fout.close();
-                }
-                catch(IOException ex){
-                    System.out.println("A");
+                    catch(IOException ex){
+                        System.out.println("A");
+                    }
                 }
                 Game.score = 0;
             }
