@@ -15,7 +15,7 @@ import java.io.File;
 import javax.swing.*;
 import javax.swing.border.*;
 public class Phow extends JPanel{
-    int px = 120, py = 30;
+    int px = 120, py = 10;
     Image bg = Toolkit.getDefaultToolkit().createImage(System.getProperty(
           "user.dir")+File.separator+"img"+File.separator+"bhow.png");
     Image th = Toolkit.getDefaultToolkit().createImage(System.getProperty(
@@ -35,7 +35,8 @@ public class Phow extends JPanel{
         g.drawString("กดปุ่มลูกศรลง (v) เพื่อเคลื่อนที่ลง", px+60, py+160);
         g.drawString("กดปุ่มลูกศรซ้าย (<-) เพื่อเคลื่อนไปทางซ้าย", px+40, py+200);
         g.drawString("กดปุ่มลูกศรขวา (->) เพื่อเคลื่อนไปทางขวา", px+40, py+240);
-        g.drawString("หากตัวเราชนกับศัตรู จะตัด Score เป็น 0 แต่เล่นต่อได้", px, py+280);
+        g.drawString("หากตัวเราชนกับศัตรู จะตัด Score เป็น 0 แต่เล่นต่อได้", px-10, py+280);
         g.drawString("เพราะการลงทัณฑ์มันไม่มีที่สิ้นสุด!", px+60, py+320);
+        g.drawString("หากหลบหนีการลงทัณฑ์กลับมาจะหนักกว่าเดิม!", px+10, py+360);
     }
 }
