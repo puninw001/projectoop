@@ -53,8 +53,6 @@ public class Game extends JPanel implements ActionListener{
         g2d.setFont(new Font("Tahoma",Font.BOLD,20));
         g2d.drawString("Score : "+score,0,20);
         File f = new File("highscore.dat");
-        FileOutputStream fout;
-        ObjectOutputStream oout;
         FileInputStream fin;
         ObjectInputStream oin;
         try{
